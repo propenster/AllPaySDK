@@ -1,0 +1,6 @@
+C:\Users\GD0024\source\repos\AllPaySDK\AllPaySDK\obj\Debug\netstandard2.0\AllPaySDK.AssemblyInfoInputs.cache
+C:\Users\GD0024\source\repos\AllPaySDK\AllPaySDK\obj\Debug\netstandard2.0\AllPaySDK.AssemblyInfo.cs
+C:\Users\GD0024\source\repos\AllPaySDK\AllPaySDK\obj\Debug\netstandard2.0\AllPaySDK.csproj.CoreCompileInputs.cache
+C:\Users\GD0024\source\repos\AllPaySDK\AllPaySDK\bin\Debug\netstandard2.0\AllPaySDK.deps.json
+C:\Users\GD0024\source\repos\AllPaySDK\AllPaySDK\bin\Debug\netstandard2.0\AllPaySDK.dll
+C:\Users\GD0024\source\repos\AllPaySDK\AllPaySDK\obj\Debug\netstandard2.0\AllPaySDK.csprojAssemblyReference.cache
