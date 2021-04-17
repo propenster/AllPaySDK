@@ -101,6 +101,6 @@ General instructions on _how_ to contribute should be stated with a link to [CON
 
 ## Credits and references
 
-1. Projects that inspired you
+1. Credits  to [Adebisi F.A](https://github.com/adebisi-fa) whose work on [Paystack .NET SDK](https://github.com/adebisi-fa/paystack-dotnet) influenced this project greatly. 
 2. Related projects
 3. Books, papers, talks, or other sources that have meaningful impact or influence on this project
