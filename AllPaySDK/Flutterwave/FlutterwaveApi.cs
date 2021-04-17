@@ -1,5 +1,12 @@
-﻿using AllPaySDK.Flutterwave.Payments.Card;
+﻿using AllPaySDK.Flutterwave.Banks;
+using AllPaySDK.Flutterwave.Bills;
+using AllPaySDK.Flutterwave.ChargeBacks;
+using AllPaySDK.Flutterwave.Misc;
+using AllPaySDK.Flutterwave.Otps;
+using AllPaySDK.Flutterwave.Payments.Card;
+using AllPaySDK.Flutterwave.Settlements;
 using AllPaySDK.Flutterwave.Transations;
+using AllPaySDK.Flutterwave.Verification;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -22,18 +29,37 @@ namespace AllPaySDK.Flutterwave
 
             Card = new CardPaymentApi(this);
             Transactions = new TransactionsApi(this);
-            
+            Verifications = new VerificationApi(this);
+            Banks = new BanksApi(this);
+            Bills = new BillsApi(this);
+            Settlements = new SettlementsApi(this);
+            Otps = new OtpsApi(this);
+            Chargebacks = new ChargebacksApi(this);
+            Misc = new MiscApi(this);
         }
 
-        public FlutterwaveApi(string apiKey, string encryptionKey)
-        {
-            _apiKey = apiKey;
-            _encryptionKey = encryptionKey;
-            _flutterwaveApiBaseUrl = new Uri("https://api.flutterwave.com/v3/");
-        }
+        //public FlutterwaveApi(string apiKey, string encryptionKey)
+        //{
+        //    _apiKey = apiKey;
+        //    _encryptionKey = encryptionKey;
+        //    _flutterwaveApiBaseUrl = new Uri("https://api.flutterwave.com/v3/");
+        //}
 
         public ICardPaymentApi Card { get; }
         public ITransactionsApi Transactions { get; }
+        public IVerificationApi Verifications { get; }
+
+        public IBanksApi Banks { get; }
+
+        public IBillsApi Bills { get; }
+
+        public ISettlementsApi Settlements { get; }
+
+        public IOtpsApi Otps { get; }
+
+        public IChargebacksApi Chargebacks { get; }
+
+        public IMiscApi Misc { get; }
 
         internal T Get<T>(string apiRelativeUrl) where T : new()
         {
@@ -48,8 +74,8 @@ namespace AllPaySDK.Flutterwave
                 RestClient client = new RestClient($"{_flutterwaveApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.GET);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 IRestResponse<T> response = client.Execute<T>(request);
                 //var deserializedResponse = JsonConvert.DeserializeObject<T>(response.Content);
@@ -77,8 +103,8 @@ namespace AllPaySDK.Flutterwave
                 RestClient client = new RestClient($"{_flutterwaveApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.GET);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 IRestResponse<T> response = await client.ExecuteGetAsync<T>(request);
                 //var deserializedResponse = JsonConvert.DeserializeObject<T>(response.Content);
@@ -106,8 +132,8 @@ namespace AllPaySDK.Flutterwave
                 RestClient client = new RestClient($"{_flutterwaveApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.GET);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 if (requestParams != null)
                 {
@@ -143,8 +169,8 @@ namespace AllPaySDK.Flutterwave
                 RestClient client = new RestClient($"{_flutterwaveApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.GET);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 if (requestParams != null)
                 {
@@ -180,8 +206,8 @@ namespace AllPaySDK.Flutterwave
                 RestClient client = new RestClient($"{_flutterwaveApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.POST);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 request.AddJsonBody(requestObject);
                 IRestResponse<T> response = client.Execute<T>(request);
@@ -214,8 +240,8 @@ namespace AllPaySDK.Flutterwave
                 RestClient client = new RestClient($"{_flutterwaveApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.PUT);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 request.AddJsonBody(requestObject);
                 IRestResponse<T> response = client.Execute<T>(request);
@@ -248,8 +274,8 @@ namespace AllPaySDK.Flutterwave
                 RestClient client = new RestClient($"{_flutterwaveApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.POST);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 request.AddJsonBody(requestObject);
                 IRestResponse<T> response = await client.ExecuteAsync<T>(request);
@@ -282,8 +308,8 @@ namespace AllPaySDK.Flutterwave
                 RestClient client = new RestClient($"{_flutterwaveApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.POST);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 request.RequestFormat = DataFormat.Json;
                 var encryptedRequest = Utils.Utility.Encrypt3DES(requestObject.ToString(), encryptionKey);

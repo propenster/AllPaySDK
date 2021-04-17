@@ -56,8 +56,8 @@ namespace AllPaySDK.Paystack
                 RestClient client = new RestClient($"{_paystackApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.GET);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 IRestResponse<T> response = client.Execute<T>(request);
                 //var deserializedResponse = JsonConvert.DeserializeObject<T>(response.Content);
@@ -85,8 +85,8 @@ namespace AllPaySDK.Paystack
                 RestClient client = new RestClient($"{_paystackApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.GET);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 IRestResponse<T> response = await client.ExecuteGetAsync<T>(request);
                 //var deserializedResponse = JsonConvert.DeserializeObject<T>(response.Content);
@@ -114,8 +114,8 @@ namespace AllPaySDK.Paystack
                 RestClient client = new RestClient($"{_paystackApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.GET);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 if(requestParams != null)
                 {
@@ -151,8 +151,8 @@ namespace AllPaySDK.Paystack
                 RestClient client = new RestClient($"{_paystackApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.GET);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 if (requestParams != null)
                 {
@@ -188,8 +188,8 @@ namespace AllPaySDK.Paystack
                 RestClient client = new RestClient($"{_paystackApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.POST);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 request.AddJsonBody(requestObject);
                 IRestResponse<T> response = client.Execute<T>(request);
@@ -222,8 +222,8 @@ namespace AllPaySDK.Paystack
                 RestClient client = new RestClient($"{_paystackApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.PUT);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 request.AddJsonBody(requestObject);
                 IRestResponse<T> response = client.Execute<T>(request);
@@ -256,8 +256,8 @@ namespace AllPaySDK.Paystack
                 RestClient client = new RestClient($"{_paystackApiBaseUrl}{apiRelativeUrl}");
                 RestRequest request = new RestRequest(Method.POST);
 
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {_apiKey}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
 
                 request.AddJsonBody(requestObject);
                 IRestResponse<T> response = await client.ExecuteAsync<T>(request);
