@@ -1,9 +1,3 @@
-# AllPaySDK
-This is a new project. It's a .NET SDK for as many payment service providers I can implement for - GooglePay, Paypal, Paystack, Flutterwave, Stripe, AmazonPay, ApplePay, AliPay etc. It's meant to be open source so contributions are welcome.
-
-
-
-
 
 #### CFPB Open Source Project Template Instructions
 
@@ -24,21 +18,22 @@ This is a new project. It's a .NET SDK for as many payment service providers I c
 To install all of the template files, run the following script from the root of your project's directory:
 
 ```
-bash -c "$(curl -s https://raw.githubusercontent.com/CFPB/development/main/open-source-template.sh)"
+This package when it is ready will be on the Nuget Package Manager org website.
 ```
 
 ----
 
-# Project Title
+# AllPaySDK
 
-**Description**:  Put a meaningful, short, plain-language description of what
-this project is trying to accomplish and why it matters.
-Describe the problem(s) this project solves.
-Describe how this software can improve the lives of its audience.
+**Description**:  This is a new project. It's a .NET SDK for as many
+payment service providers I can implement for - GooglePay, Paypal, 
+Paystack, Flutterwave, Stripe, AmazonPay, ApplePay, AliPay etc. 
+It's meant to be open source so contributions are welcome.
+.
 
 Other things to include:
 
-  - **Technology stack**: Indicate the technological nature of the software, including primary programming language(s) and whether the software is intended as standalone or as a module in a framework or other ecosystem.
+  - **Technology stack**: This SDK is built in C# and .NET Standard, it hopes to target and be compatible with a number of the Microsoft .NET and .NET Core Frameworks.
   - **Status**:  Alpha, Beta, 1.1, etc. It's OK to write a sentence, too. The goal is to let interested people know where this project is at. This is also a good place to link to the [CHANGELOG](CHANGELOG.md).
   - **Links to production or demo instances**
   - Describe what sets this apart from related-projects. Linking to another doc or page is OK if this can't be expressed in a sentence or two.
