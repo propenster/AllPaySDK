@@ -16,6 +16,21 @@ namespace AllPaySDK.Flutterwave.Transfers
         {
             _api = api;
         }
+        /// <summary>
+        /// This document shows you how to initiate a bulk transfer
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public CreateBulkTransferResponse CreateBulkTransfer(CreateBulkTransferRequest request)
+        {
+            return _api.Post<CreateBulkTransferResponse>("bulk-transfers", request);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public MobileMoneyTransferResponse FrancophoneMobileMoneyTransfer(MobileMoneyTransferRequest request)
         {
             return _api.Post<MobileMoneyTransferResponse>("transfers", new MobileMoneyTransferRequest
@@ -50,8 +65,32 @@ namespace AllPaySDK.Flutterwave.Transfers
             reference = reference,
             beneficiary_name = beneficiary_name
         });
+
+        public GetAllTransfersResponse GetAllTransfers(string page = null, string status = null) => _api.GetWithParameters<GetAllTransfersResponse>("transfers", new Dictionary<string, object>()
+        {
+            {"page", page },
+            {"status", status }
+        });
+
+        public GetTransferFeeResponse GetGetTransferFee(string amount, string currency = null, string type = null) => _api.GetWithParameters<GetTransferFeeResponse>("transfers/fee", new Dictionary<string, object>()
+        {
+            {"amount", amount },
+            {"currency", currency },
+            {"type", type }
+        });
+        /// <summary>
+        /// Fetch a single transfer on your account
+        /// </summary>
+        /// <param name="id">This is the numeric ID of the transfer you want to fetch. It is returned in the call to create a transfer as data.id</param>
+        /// <returns>GetSingleTransferResponse</returns>
+        public GetSingleTransferResponse GetSingleTransfer(int id) => _api.Get<GetSingleTransferResponse>($"transfers/{id}");
         
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public MobileMoneyTransferResponse GhanaMobileMoneyTransfer(MobileMoneyTransferRequest request)
         {
             return _api.Post<MobileMoneyTransferResponse>("transfers", new MobileMoneyTransferRequest
@@ -65,7 +104,17 @@ namespace AllPaySDK.Flutterwave.Transfers
                 beneficiary_name = request.beneficiary_name
             });
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="account_number"></param>
+        /// <param name="reference"></param>
+        /// <param name="beneficiary_name"></param>
+        /// <param name="account_bank"></param>
+        /// <param name="currency"></param>
+        /// <param name="narration"></param>
+        /// <returns></returns>
         public MobileMoneyTransferResponse GhanaMobileMoneyTransfer(int amount, string account_number, string reference, string beneficiary_name, string account_bank = "MTN", string currency = "GHS", string narration = null)
         => GhanaMobileMoneyTransfer(new MobileMoneyTransferRequest
         {
@@ -77,7 +126,11 @@ namespace AllPaySDK.Flutterwave.Transfers
             reference = reference,
             beneficiary_name = beneficiary_name
         });
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public MobileMoneyTransferResponse MPesaMobileMoneyTransfer(MobileMoneyTransferRequest request)
         {
             return _api.Post<MobileMoneyTransferResponse>("transfers", new MobileMoneyTransferRequest
@@ -91,7 +144,17 @@ namespace AllPaySDK.Flutterwave.Transfers
                 beneficiary_name = request.beneficiary_name
             });
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="account_number"></param>
+        /// <param name="reference"></param>
+        /// <param name="beneficiary_name"></param>
+        /// <param name="account_bank"></param>
+        /// <param name="currency"></param>
+        /// <param name="narration"></param>
+        /// <returns></returns>
         public MobileMoneyTransferResponse MPesaMobileMoneyTransfer(int amount, string account_number, string reference, string beneficiary_name, string account_bank = "MPS", string currency = "KES", string narration = null)
         => MPesaMobileMoneyTransfer(new MobileMoneyTransferRequest
         {
@@ -103,7 +166,11 @@ namespace AllPaySDK.Flutterwave.Transfers
             reference = reference,
             beneficiary_name = beneficiary_name
         });
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public MobileMoneyTransferResponse RwandaMobileMoneyTransfer(MobileMoneyTransferRequest request)
         {
             return _api.Post<MobileMoneyTransferResponse>("transfers", new MobileMoneyTransferRequest
@@ -117,7 +184,17 @@ namespace AllPaySDK.Flutterwave.Transfers
                 beneficiary_name = request.beneficiary_name
             });
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="account_number"></param>
+        /// <param name="reference"></param>
+        /// <param name="beneficiary_name"></param>
+        /// <param name="account_bank"></param>
+        /// <param name="currency"></param>
+        /// <param name="narration"></param>
+        /// <returns></returns>
         public MobileMoneyTransferResponse RwandaMobileMoneyTransfer(int amount, string account_number, string reference, string beneficiary_name, string account_bank = "MPS", string currency = "RWF", string narration = null)
         => RwandaMobileMoneyTransfer(new MobileMoneyTransferRequest
         {
@@ -129,7 +206,18 @@ namespace AllPaySDK.Flutterwave.Transfers
             reference = reference,
             beneficiary_name = beneficiary_name
         });
+        /// <summary>
+        /// This helps you retry a previously failed transfer. <c>Try this</c>
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>TransferRetryResponse</returns>
+        public TransferRetryResponse TransferRetry(int id) => _api.PostWithoutBody<TransferRetryResponse>($"transfers/{id}/retries");
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public MobileMoneyTransferResponse TransferToBarterAccount(MobileMoneyTransferRequest request)
         {
             return _api.Post<MobileMoneyTransferResponse>("transfers", new MobileMoneyTransferRequest

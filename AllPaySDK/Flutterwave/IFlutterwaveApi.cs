@@ -6,6 +6,7 @@ using AllPaySDK.Flutterwave.Otps;
 using AllPaySDK.Flutterwave.Payments.Card;
 using AllPaySDK.Flutterwave.Settlements;
 using AllPaySDK.Flutterwave.Transations;
+using AllPaySDK.Flutterwave.Transfers;
 using AllPaySDK.Flutterwave.Verification;
 using System;
 using System.Collections.Generic;
@@ -24,5 +25,6 @@ namespace AllPaySDK.Flutterwave
         IOtpsApi Otps { get; }
         IChargebacksApi Chargebacks { get; }
         IMiscApi Misc { get; }
+        ITransfersApi Transfers { get; }
     }
 }

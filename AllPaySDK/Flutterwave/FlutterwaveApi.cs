@@ -6,6 +6,7 @@ using AllPaySDK.Flutterwave.Otps;
 using AllPaySDK.Flutterwave.Payments.Card;
 using AllPaySDK.Flutterwave.Settlements;
 using AllPaySDK.Flutterwave.Transations;
+using AllPaySDK.Flutterwave.Transfers;
 using AllPaySDK.Flutterwave.Verification;
 using RestSharp;
 using System;
@@ -36,6 +37,7 @@ namespace AllPaySDK.Flutterwave
             Otps = new OtpsApi(this);
             Chargebacks = new ChargebacksApi(this);
             Misc = new MiscApi(this);
+            Transfers = new TransfersApi(this);
         }
 
         //public FlutterwaveApi(string apiKey, string encryptionKey)
@@ -60,6 +62,8 @@ namespace AllPaySDK.Flutterwave
         public IChargebacksApi Chargebacks { get; }
 
         public IMiscApi Misc { get; }
+
+        public ITransfersApi Transfers { get; }
 
         internal T Get<T>(string apiRelativeUrl) where T : new()
         {
@@ -334,6 +338,40 @@ namespace AllPaySDK.Flutterwave
         }
 
 
+
+        internal T PostWithoutBody<T>(string apiRelativeUrl, object requestObject = null) where T : new()
+        {
+            T result = new T();
+
+            try
+            {
+                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                ServicePointManager.ServerCertificateValidationCallback +=
+                        (sender, certificate, chain, sslPolicyErrors) => true;
+
+                RestClient client = new RestClient($"{_flutterwaveApiBaseUrl}{apiRelativeUrl}");
+                RestRequest request = new RestRequest(Method.POST);
+
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Authorization", $"Bearer {_apiKey}");
+
+                //request.AddJsonBody(requestObject);
+                IRestResponse<T> response = client.Execute<T>(request);
+
+                //var deserializedResponse = JsonConvert.DeserializeObject<T>(response.Content);
+
+                result = response.Data;
+
+            }
+            catch (Exception)
+            {
+
+                return result;
+            }
+
+            return result;
+
+        }
 
     }
 

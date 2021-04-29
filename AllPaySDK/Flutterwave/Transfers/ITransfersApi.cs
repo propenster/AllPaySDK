@@ -45,6 +45,13 @@ namespace AllPaySDK.Flutterwave.Transfers
         MobileMoneyTransferResponse TransferToBarterAccount(MobileMoneyTransferRequest request);
         MobileMoneyTransferResponse TransferToBarterAccount(int amount, string account_number, string reference, string beneficiary_name, string account_bank = "barter", string currency = "NGN", string narration = null);
 
+        TransferRetryResponse TransferRetry(int id);
+        CreateBulkTransferResponse CreateBulkTransfer(CreateBulkTransferRequest request);
+        GetTransferFeeResponse GetGetTransferFee(string amount, string currency = null, string type = null);
+
+        GetAllTransfersResponse GetAllTransfers(string page = null, string status = null);
+        GetSingleTransferResponse GetSingleTransfer(int id);
+
 
     }
 }
